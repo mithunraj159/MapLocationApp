@@ -1,7 +1,9 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="11134" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="11134"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="16097.2"/>
+        <plugIn identifier="com.apple.MapKitIBPlugin" version="16097.2"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--Application-->
@@ -673,7 +675,7 @@
                         <outlet property="delegate" destination="Voe-Tx-rLC" id="PrD-fu-P6m"/>
                     </connections>
                 </application>
-                <customObject id="Voe-Tx-rLC" customClass="AppDelegate" customModuleProvider="target"/>
+                <customObject id="Voe-Tx-rLC" customClass="AppDelegate" customModule="MapLocationApp" customModuleProvider="target"/>
                 <customObject id="YLy-65-1bz" customClass="NSFontManager"/>
                 <customObject id="Ady-hI-5gd" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -703,11 +705,40 @@
         <!--View Controller-->
         <scene sceneID="hIz-AP-VOD">
             <objects>
-                <viewController id="XfG-lQ-9wD" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="XfG-lQ-9wD" customClass="ViewController" customModule="MapLocationApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="m2S-Jp-Qdl">
                         <rect key="frame" x="0.0" y="0.0" width="480" height="270"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <mapView mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="pdf-Jt-Kf4">
+                                <rect key="frame" x="0.0" y="35" width="480" height="235"/>
+                            </mapView>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="wJ3-4r-WAx">
+                                <rect key="frame" x="-2" y="0.0" width="484" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="Mjn-od-Agh"/>
+                                </constraints>
+                                <textFieldCell key="cell" lineBreakMode="clipping" alignment="center" title="Label" id="j3E-tk-GgT">
+                                    <font key="font" metaFont="systemBold" size="20"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="pdf-Jt-Kf4" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" id="3Pt-3c-2WZ"/>
+                            <constraint firstItem="wJ3-4r-WAx" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" id="JQh-ZU-Qsq"/>
+                            <constraint firstAttribute="trailing" secondItem="wJ3-4r-WAx" secondAttribute="trailing" id="Ty6-BU-NDE"/>
+                            <constraint firstAttribute="trailing" secondItem="pdf-Jt-Kf4" secondAttribute="trailing" id="WbF-p5-MBJ"/>
+                            <constraint firstAttribute="bottom" secondItem="wJ3-4r-WAx" secondAttribute="bottom" id="f4N-53-pid"/>
+                            <constraint firstItem="pdf-Jt-Kf4" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" id="fEj-qj-kGv"/>
+                            <constraint firstItem="wJ3-4r-WAx" firstAttribute="top" secondItem="pdf-Jt-Kf4" secondAttribute="bottom" constant="5" id="yic-RM-72H"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="addressLabel" destination="wJ3-4r-WAx" id="UIc-VL-P23"/>
+                        <outlet property="mapView" destination="pdf-Jt-Kf4" id="z46-hM-Sql"/>
+                    </connections>
                 </viewController>
                 <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
